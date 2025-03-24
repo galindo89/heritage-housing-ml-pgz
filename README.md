@@ -1,5 +1,5 @@
 
-# Heritage Housing Issues - Predictive Analytics Project
+# Heritage Housing - Predictive Analytics Project
 
 ## Project Overview
 
