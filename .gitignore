@@ -11,3 +11,4 @@ kaggle.json
 venv/*
 venv/
 kaggle.json
+jupyter_notebooks/05 - Modeling and Evaluation - Predict SalePrice-not-include.ipynb
