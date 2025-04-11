@@ -41,9 +41,11 @@ def home_page():
     st.write(
         """
         Use the sidebar to explore the following sections:
-        - Page 1
-        - Page 2
-        - Page 3
-        - Page n
+        - Exploratory Data Analysis
+        - House Price Predictions
+        - Feature Correlation Insights
+        - 
+        - Hypothesis Validation
+        - Model Performance
         """
     )

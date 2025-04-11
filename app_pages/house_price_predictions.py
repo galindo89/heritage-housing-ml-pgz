@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from src.load_model_data import load_pkl_files
+from src.predict_csv import predict_from_csv
 
 VERSION = "v1"
 PIPELINES_PATH = f"outputs/ml_pipeline/saleprice/{VERSION}/"
@@ -14,11 +15,29 @@ def prediction_page_body():
     # Load both components
     feature_pipeline = load_pkl_files(f"{PIPELINES_PATH}{FEATURE_ENG_NAME}")
     model = load_pkl_files(f"{PIPELINES_PATH}{MODEL_NAME}")
-
-
+    
     if feature_pipeline is None or model is None:
         st.warning("Could not load pipeline or model. Please check file paths.")
         return
+    
+    st.markdown("---")
+    st.subheader("Predict from CSV")
+
+    csv_file = st.file_uploader("Upload a CSV file with house attributes", type=["csv"])
+
+    if csv_file is not None:
+        df_output, error_msg, total_value = predict_from_csv(csv_file, feature_pipeline, model)
+
+        if error_msg:
+            st.error(error_msg)
+        else:
+            st.success("Predictions completed successfully.")
+            st.dataframe(df_output)
+            st.markdown(f"**Total predicted value for all properties:** ${total_value:,.2f}")
+            st.download_button("Download predictions as CSV", df_output.to_csv(index=False), file_name="predicted_prices.csv")
+    
+    st.markdown("---")
+    st.subheader("Predict from Direct Input")
 
     st.markdown("Use the form below to input house attributes and predict the sale price.")
     
