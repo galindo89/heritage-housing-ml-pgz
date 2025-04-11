@@ -6,6 +6,7 @@ VERSION = "v1"
 PIPELINES_PATH = f"outputs/ml_pipeline/saleprice/{VERSION}/"
 MODEL_NAME = "lr_pipeline_model.pkl"
 FEATURE_ENG_NAME = "lr_pipeline_data_cleaning_feat_eng.pkl"
+METADATA_PATH = "inputs/datasets/raw/house-metadata.txt"
 
 
 def prediction_page_body():
@@ -20,6 +21,10 @@ def prediction_page_body():
         return
 
     st.markdown("Use the form below to input house attributes and predict the sale price.")
+    
+    with st.expander("Click to view feature descriptions"):
+        with open(METADATA_PATH, "r") as f:
+            st.text(f.read())
 
     with st.form("prediction_form"):
         st.subheader("Input House Attributes")
