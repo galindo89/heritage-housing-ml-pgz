@@ -89,6 +89,49 @@ def feature_analysis_body():
     | GarageYrBlt        | 0.55    | 0.62     |
     
     """)
+    
+    if st.checkbox("Show correlations ≥ 0.5 (Pearson vs Spearman)"):
+        try:
+            df = load_data_sets("outputs/datasets/collection/house_prices_records_encoded.csv")
+            numeric_df = df.select_dtypes(include='number')
+
+            
+            pearson_corr = numeric_df.corr(method='pearson')['SalePrice'].drop('SalePrice')
+            pearson_high = pearson_corr[pearson_corr.abs() >= 0.5].index.tolist()
+
+          
+            spearman_corr = numeric_df.corr(method='spearman')['SalePrice'].drop('SalePrice')
+            spearman_high = spearman_corr[spearman_corr.abs() >= 0.5].index.tolist()
+
+            
+            pearson_features = list(set(pearson_high + ['SalePrice']))
+            spearman_features = list(set(spearman_high + ['SalePrice']))
+
+            fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+
+            
+            sns.heatmap(
+                numeric_df[pearson_features].corr(method='pearson'),
+                annot=True, cmap='coolwarm', fmt=".2f", ax=axes[0], cbar=False
+            )
+            axes[0].set_title("Pearson Correlations ≥ 0.5")
+
+            
+            sns.heatmap(
+                numeric_df[spearman_features].corr(method='spearman'),
+                annot=True, cmap='coolwarm', fmt=".2f", ax=axes[1], cbar=False
+            )
+            axes[1].set_title("Spearman Correlations ≥ 0.5")
+
+            plt.tight_layout()
+            st.pyplot(fig)
+            plt.close()
+
+        except FileNotFoundError:
+            st.error("Could not find 'house_prices_records_encoded.csv' in outputs directory.")
+        except Exception as e:
+            st.error(f"An error occurred while plotting: {e}")
+    
    
 
     if st.checkbox("Show scatter plots for selected features"):
