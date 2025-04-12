@@ -41,10 +41,8 @@ def home_page():
     st.write(
         """
         Use the sidebar to explore the following sections:
-        - Exploratory Data Analysis
+        - House Features Analysis
         - House Price Predictions
-        - Feature Correlation Insights
-        - 
         - Hypothesis Validation
         - Model Performance
         """
