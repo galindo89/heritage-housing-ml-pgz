@@ -1,9 +1,6 @@
 import streamlit as st
 from src.load_model_data import load_pkl_files, load_data_sets
 from src.model_performance_evaluator import evaluate_model_performance, plot_feature_importance 
-from sklearn.ensemble import GradientBoostingRegressor
-
-
 
 
 def model_performance_body():
