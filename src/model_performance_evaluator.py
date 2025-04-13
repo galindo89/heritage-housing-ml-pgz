@@ -42,7 +42,7 @@ def evaluate_model_performance(pipeline, X_train, X_test, y_train_log, y_test_lo
 
 
 
-def plot_feature_importance(pipeline, X_train, top_n=10, title="Feature Importances"):
+def plot_feature_importance(pipeline, X_train, top_n=10, title="List of Most Important Features"):
 
     try:
         selector = pipeline.named_steps["feature_selection"]

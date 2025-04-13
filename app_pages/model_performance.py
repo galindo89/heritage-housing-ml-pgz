@@ -74,12 +74,12 @@ def model_performance_body():
     Since the target variable `SalePrice` was log-transformed during training, we evaluate model performance on both the **log scale** and the **original scale** (after inverse transformation). This allows us to assess both model fit and interpretability in actual currency values.
     """)
         
-    X_train= load_data_sets("outputs/ml_pipeline/saleprice/v1/X_train.csv")
-    Y_train= load_data_sets("outputs/ml_pipeline/saleprice/v1/Y_train.csv")
-    X_test= load_data_sets("outputs/ml_pipeline/saleprice/v1/X_test.csv")
-    Y_test= load_data_sets("outputs/ml_pipeline/saleprice/v1/Y_test.csv")
-    Y_train_log= load_data_sets("outputs/ml_pipeline/saleprice/v1/Y_train_log.csv")
-    Y_test_log= load_data_sets("outputs/ml_pipeline/saleprice/v1/Y_test_log.csv")
+    X_train= load_data_sets("outputs/ml_pipeline/saleprice/v1/x_train.csv")
+    Y_train= load_data_sets("outputs/ml_pipeline/saleprice/v1/y_train.csv")
+    X_test= load_data_sets("outputs/ml_pipeline/saleprice/v1/x_test.csv")
+    Y_test= load_data_sets("outputs/ml_pipeline/saleprice/v1/y_test.csv")
+    Y_train_log= load_data_sets("outputs/ml_pipeline/saleprice/v1/y_train_log.csv")
+    Y_test_log= load_data_sets("outputs/ml_pipeline/saleprice/v1/y_test_log.csv")
     pipeline_model= load_pkl_files("outputs/ml_pipeline/saleprice/v1/lr_pipeline_model.pkl")
    
 
