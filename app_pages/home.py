@@ -1,7 +1,7 @@
 import streamlit as st
 
 def home_page():
-    st.title("Inheritage Housing Price - Project Overview")
+    st.title("Heritage Housing Price - Project Overview")
 
     st.markdown("## Project Purpose")
     st.write(
