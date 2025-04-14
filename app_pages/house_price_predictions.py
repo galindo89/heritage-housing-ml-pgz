@@ -24,7 +24,26 @@ def prediction_page_body():
         return
     
     st.markdown("---")
+    
+    st.markdown("""
+    You can predict house sale prices in two ways:
+
+    1. **Upload a CSV file** with multiple house entries for batch prediction.
+    2. **Manually input house features** using the form below for a single house prediction.
+
+    Use the method that best suits your needs.
+    """)
+
+    st.markdown("---")
     st.subheader("Predict from CSV")
+    
+    st.markdown("""
+    **Important:** Please upload a CSV file that matches the expected column 
+    structure and order used during model training.  
+    You can use the following sample CSV as a reference:  
+    [Download Sample CSV](https://docs.google.com/spreadsheets/d/1OmcZtAUDArOSxuE-5l37bMacHqde_yF0K1DvZZwSjZQ/edit?usp=sharing)
+    """)
+
 
     csv_file = st.file_uploader("Upload a CSV file with house attributes", type=["csv"])
 
@@ -53,7 +72,8 @@ def prediction_page_body():
         col1, col2 = st.columns(2)
 
         with col1:
-            first_flr_sf = st.number_input("1st Floor SF", min_value=100, max_value=3000, value=1200)
+            overall_qual = st.selectbox("Overall Quality (1=worst, 10=best)", list(range(1, 11)), index=5)
+            gr_liv_area = st.number_input("Above Grade Living Area", min_value=300, max_value=4000, value=1500)
             second_flr_sf = st.number_input("2nd Floor SF", min_value=0, max_value=3000, value=500)
             bedroom_abv_gr = st.selectbox("Bedrooms Above Ground", [0, 1, 2, 3, 4, 5])
             bsmt_exposure = st.selectbox("Basement Exposure", ["Gd", "Av", "Mn", "No", "None"])
@@ -66,17 +86,16 @@ def prediction_page_body():
             garage_yr_blt = st.number_input("Garage Year Built", min_value=1900, max_value=2025, value=2000)
 
         with col2:
-            gr_liv_area = st.number_input("Above Grade Living Area", min_value=300, max_value=4000, value=1500)
+            total_bsmt_sf = st.number_input("Total Basement SF", min_value=0, max_value=3000, value=1000)
+            year_built = st.number_input("Year Built", min_value=1900, max_value=2025, value=1975)
             kitchen_qual = st.selectbox("Kitchen Quality", ["Ex", "Gd", "TA", "Fa", "Po"])
             lot_area = st.number_input("Lot Area (sq ft)", min_value=1000, max_value=100000, value=9000)
             lot_frontage = st.number_input("Lot Frontage (ft)", min_value=20.0, max_value=200.0, value=70.0)
             mas_vnr_area = st.number_input("Masonry Veneer Area", min_value=0, max_value=1000, value=100)
             open_porch_sf = st.number_input("Open Porch SF", min_value=0, max_value=500, value=50)
             overall_cond = st.selectbox("Overall Condition (1=worst, 10=best)", list(range(1, 11)), index=5)
-            overall_qual = st.selectbox("Overall Quality (1=worst, 10=best)", list(range(1, 11)), index=5)
-            total_bsmt_sf = st.number_input("Total Basement SF", min_value=0, max_value=3000, value=1000)
+            first_flr_sf = st.number_input("1st Floor SF", min_value=100, max_value=3000, value=1200)
             wood_deck_sf = st.number_input("Wood Deck SF", min_value=0, max_value=1000, value=0)
-            year_built = st.number_input("Year Built", min_value=1900, max_value=2025, value=1975)
             year_remod_add = st.number_input("Year Remodeled", min_value=1900, max_value=2025, value=2005)
 
         submit = st.form_submit_button("Predict Sale Price")
