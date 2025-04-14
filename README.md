@@ -42,7 +42,7 @@ Visit the deployed site: [House-Price-Prediction-App](https://heritage-housing-m
     - [Documentation Links](#documentation-links)
   - [Resources](#resources)
   - [Credits \& Acknowledgements](#credits--acknowledgements)
-  - [Contact](#contact)
+    - [Autor](#autor)
 
 ---
 
@@ -422,5 +422,6 @@ The project makes use of the following major Python packages:
 - Helpful insights and troubleshooting from peers during project development.
 - Stack Overflow, GitHub discussions, and official documentation were instrumental in solving technical challenges.
 
-## Contact
-For more information, please contact [pablo.galindozapata@gmail.com].
+### Autor 
+- This project was implemented by Pablo Galindo Zapata
+- For more information, please contact him at pablo.galindozapata@gmail.com.
