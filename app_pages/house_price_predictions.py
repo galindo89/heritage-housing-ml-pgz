@@ -7,7 +7,7 @@ VERSION = "v1"
 PIPELINES_PATH = f"outputs/ml_pipeline/saleprice/{VERSION}/"
 MODEL_NAME = "lr_pipeline_model.pkl"
 FEATURE_ENG_NAME = "lr_pipeline_data_cleaning_feat_eng.pkl"
-METADATA_PATH = "inputs/datasets/raw/house-metadata.txt"
+METADATA_PATH = "inputs/assets/feature_mapping_reference.txt"
 
 
 def prediction_page_body():
