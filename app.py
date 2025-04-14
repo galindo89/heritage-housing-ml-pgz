@@ -18,7 +18,5 @@ app.add_page("House Price Prediction", prediction_page_body)
 app.add_page("Hypothesis Validation", hypothesis_page_body)
 app.add_page("Model Performance Overview", model_performance_body)
 
-
-
 # Run the app
 app.run()

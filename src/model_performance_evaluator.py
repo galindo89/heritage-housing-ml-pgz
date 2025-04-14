@@ -4,7 +4,11 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 def evaluate_model_performance(pipeline, X_train, X_test, y_train_log, y_test_log, y_train, y_test):
+    """
+    Evaluate the performance of a regression model using various metrics.
+    """
     # Predictions in log scale
     y_train_pred_log = pipeline.predict(X_train)
     y_test_pred_log = pipeline.predict(X_test)
@@ -40,9 +44,10 @@ def evaluate_model_performance(pipeline, X_train, X_test, y_train_log, y_test_lo
     col3.metric("Test MAE", f"{mean_absolute_error(y_test, y_test_pred):,.2f}")
 
 
-
-
 def plot_feature_importance(pipeline, X_train, top_n=10, title="List of Most Important Features"):
+    """
+    Plot feature importances from the model pipeline.
+    """
 
     try:
         selector = pipeline.named_steps["feature_selection"]
@@ -63,7 +68,7 @@ def plot_feature_importance(pipeline, X_train, top_n=10, title="List of Most Imp
         st.subheader(title)
         st.dataframe(df_feature_importance)
 
-        st.markdown("**Feature Importance Plot:**")        
+        st.markdown("**Feature Importance Plot:**")
         fig, ax = plt.subplots(figsize=(10, 5))
         df_feature_importance.head(top_n).plot(
             kind='bar',
@@ -80,3 +85,4 @@ def plot_feature_importance(pipeline, X_train, top_n=10, title="List of Most Imp
 
     except Exception as e:
         st.error(f"Error displaying feature importances: {e}")
+

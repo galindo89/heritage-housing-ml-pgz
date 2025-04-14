@@ -1,7 +1,11 @@
 import pandas as pd
 import streamlit as st
 
+
 def predict_from_csv(csv_file, feature_pipeline, model):
+    """
+    Predict house prices from a CSV file using a trained pipeline and model.
+    """
     try:
         df_input = pd.read_csv(csv_file)
 

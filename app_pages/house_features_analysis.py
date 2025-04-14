@@ -4,17 +4,23 @@ from src.load_model_data import load_data_sets
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
 def feature_analysis_body():
     st.title("Exploratory Data Analysis")
 
     st.header("1. Business Context")
     st.markdown("""
-    As part of the business requirement of this project, it was required to make an analysis of the house features to understand the most important ones to predict house prices.
+    As part of the business requirement of this project, it was required to
+    make an analysis of the house features to understand the most important
+    ones to predict house prices.
 
-    To better understand the house price distribution and the driving factors behind valuation, we examine key variables that influence `SalePrice` in Ames, Iowa.
+    To better understand the house price distribution and the driving factors
+    behind valuation, we examine key variables that influence `SalePrice`
+    in Ames, Iowa.
 
     This analysis addresses **Business Requirement 1**:
-    > *Identify which house attributes correlate most strongly with sale price.*
+    > *Identify which house attributes correlate most strongly with
+    sale price.*
     """)
 
     st.header("2. Dataset Overview")
@@ -30,9 +36,15 @@ def feature_analysis_body():
 
     st.header("3. Handling of Categorical Data")
     st.markdown("""
-    The dataset includes multiple categorical features such as `KitchenQual`, `GarageFinish`, `BsmtExposure`, and `BsmtFinType1`. We explored their meaning and used boxplots to understand their relationship with the target variable `SalePrice`. These plots clearly showed that these variables follow an ordinal pattern — for instance, `KitchenQual` ranges from "Fair" to "Excellent", and `GarageFinish` from "Unfinished" to "Finished".
+    The dataset includes multiple categorical features such as `KitchenQual`,
+    `GarageFinish`, `BsmtExposure`, and `BsmtFinType1`. We explored their
+    meaning and used boxplots to understand their relationship with the target
+    variable `SalePrice`. These plots clearly showed that these variables
+    follow an ordinal pattern — for instance, `KitchenQual` ranges from "Fair"
+    to "Excellent", and `GarageFinish` from "Unfinished" to "Finished".
 
-    See boxplots below showing the relationship between these categorical features and `SalePrice`:
+    See boxplots below showing the relationship between these categorical
+    features and `SalePrice`:
     """)
 
     try:
@@ -58,7 +70,9 @@ def feature_analysis_body():
         st.error(f"An error occurred while plotting: {e}")
 
     st.markdown("""
-    To evaluate the correlation towards SalePrice using Spearman, we first needed to **ordinally encode** them, assigning a logical numeric order to each level:
+    To evaluate the correlation towards SalePrice using Spearman, we first 
+    needed to **ordinally encode** them, assigning a logical numeric order
+    to each level:
 
     | Variable         | Encoding Order              |
     |------------------|-----------------------------|
@@ -67,13 +81,16 @@ def feature_analysis_body():
     | BsmtExposure     | No < Mn < Av < Gd           |
     | BsmtFinType1     | Unf < Rec < BLQ < ALQ < GLQ |
 
-    Encoding them this way preserves their **ordinal nature** and allows us to measure correlation accurately.
-    To differentiate between the original and encoded features, we added `_Enc` to the encoded feature names.
+    Encoding them this way preserves their **ordinal nature** and allows us to
+    measure correlation accurately.
+    To differentiate between the original and encoded features, we added
+    `_Enc` to the encoded feature names.
     """)
 
     st.header("4. Features Most Correlated with SalePrice")
     st.markdown("""
-    Based on both **Pearson** and **Spearman** correlation analyses, the following features showed strong relationships with `SalePrice`:
+    Based on both **Pearson** and **Spearman** correlation analyses, 
+    the following features showed strong relationships with `SalePrice`:
 
     | Feature            | Pearson | Spearman |
     |--------------------|---------|----------|
@@ -87,29 +104,26 @@ def feature_analysis_body():
     | KitchenQual_Enc    | 0.67    | 0.69     |
     | GarageFinish_Enc   | 0.65    | 0.66     |
     | GarageYrBlt        | 0.55    | 0.62     |
-    
+
     """)
-    
+
     if st.checkbox("Show correlations ≥ 0.5 (Pearson vs Spearman)"):
         try:
             df = load_data_sets("outputs/datasets/collection/house_prices_records_encoded.csv")
             numeric_df = df.select_dtypes(include='number')
 
-            
+
             pearson_corr = numeric_df.corr(method='pearson')['SalePrice'].drop('SalePrice')
             pearson_high = pearson_corr[pearson_corr.abs() >= 0.5].index.tolist()
 
-          
             spearman_corr = numeric_df.corr(method='spearman')['SalePrice'].drop('SalePrice')
             spearman_high = spearman_corr[spearman_corr.abs() >= 0.5].index.tolist()
 
-            
             pearson_features = list(set(pearson_high + ['SalePrice']))
             spearman_features = list(set(spearman_high + ['SalePrice']))
 
             fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-            
             sns.heatmap(
                 numeric_df[pearson_features].corr(method='pearson'),
                 annot=True, cmap='coolwarm', fmt=".2f", ax=axes[0], cbar=False
@@ -131,8 +145,7 @@ def feature_analysis_body():
             st.error("Could not find 'house_prices_records_encoded.csv' in outputs directory.")
         except Exception as e:
             st.error(f"An error occurred while plotting: {e}")
-    
-   
+
 
     if st.checkbox("Show scatter plots for selected features"):
         try:
@@ -142,7 +155,7 @@ def feature_analysis_body():
             'GarageArea', 'TotalBsmtSF', '1stFlrSF', 'GarageFinish_Enc',
             'GarageYrBlt', 'YearRemodAdd'
             ]
-            
+
             for col in selected_features:
                 fig, ax = plt.subplots(figsize=(12, 4))                        
                 sns.scatterplot(data=df, x=col, y='SalePrice', ax=ax)
