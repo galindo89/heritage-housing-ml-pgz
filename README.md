@@ -119,6 +119,9 @@ All preprocessing decisions and feature engineering steps were based directly on
 The feature descriptions and value ranges were derived from the accompanying metadata file:  
 [house-metadata.txt](./inputs/datasets/raw/house-metadata.txt)
 
+The dataset is publicly available on Kaggle and does not contain any personally identifiable information (PII) or sensitive data. 
+Therefore, its use complies with ethical and privacy standards required for public deployment.
+
 
 ## Business Requirements
 
@@ -167,7 +170,7 @@ The following user stories were defined to guide the implementation of features 
 | Create and Maintain Jupyter Notebooks                                           | Documentation                    |
 | Include a Technical Page for Model Performance                                  | Dashboard Development            |
 | Deploy the App to a Cloud Platform                                              | Deployment                       |
-| Build a User Interface for Predictions (#8)                                     | Dashboard Development            |
+| Build a User Interface for Predictions                                  | Dashboard Development            |
 | Display Data Insights on the Dashboard                                          | Dashboard Development            |
 
 
@@ -403,7 +406,9 @@ The project makes use of the following major Python packages:
 
 - Dataset used in this project: [Ames Housing Dataset on Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data)
 - This project was developed as part of the Code Institute Predictive Analytics program.
-- The implementation was based on original work but inspired by best practices introduced in Code Institute's walkthroughs.
+- The implementation was based on original work but inspired by best practices introduced in Code Institute's walkthroughs. 
+  Sections of code from the Churnometer project have been adapted, particularly for feature engineering and modeling tasks. 
+  Please refer to the original repository for reference: [Churnometer Project Repository](https://github.com/Code-Institute-Solutions/churnometer)
 - Additional helpful resources:
   - [Scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
   - [Towards Data Science: Feature Engineering Techniques](https://towardsdatascience.com/feature-engineering-for-machine-learning-3a5e293a5114)
