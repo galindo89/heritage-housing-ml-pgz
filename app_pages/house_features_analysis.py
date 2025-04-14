@@ -6,6 +6,9 @@ import seaborn as sns
 
 
 def feature_analysis_body():
+    """
+    Display the feature analysis page of the Streamlit app.
+    """
     st.title("Exploratory Data Analysis")
 
     st.header("1. Business Context")

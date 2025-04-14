@@ -5,6 +5,9 @@ from src.model_performance_evaluator import plot_feature_importance
 
 
 def model_performance_body():
+    """
+    Display the model performance page of the Streamlit app.
+    """
     st.title("Model Performance Overview")
     st.header("1. Goal of the Model")
     st.markdown("""

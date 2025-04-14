@@ -11,6 +11,9 @@ METADATA_PATH = "inputs/datasets/raw/house-metadata.txt"
 
 
 def prediction_page_body():
+    """
+    Display the prediction page of the Streamlit app.
+    """
     st.title("House Price Prediction")
     # Load both components
     feature_pipeline = load_pkl_files(f"{PIPELINES_PATH}{FEATURE_ENG_NAME}")

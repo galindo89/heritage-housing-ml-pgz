@@ -1,6 +1,9 @@
 import streamlit as st
 
 def hypothesis_page_body():
+    """
+    Display the hypothesis validation page of the Streamlit app.
+    """
     st.title("Hypothesis Validation")
 
     st.header("1. Business Hypotheses")
@@ -43,4 +46,4 @@ def hypothesis_page_body():
 
     The final model relies on features that are both statistically sound and predictively reliable.
     """)
-
+    

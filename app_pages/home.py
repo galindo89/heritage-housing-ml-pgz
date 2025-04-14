@@ -2,6 +2,9 @@ import streamlit as st
 
 
 def home_page():
+    """
+    Display the home page of the Streamlit app.
+    """
     st.title("Heritage Housing Price - Project Overview")
 
     st.markdown("## Project Purpose")
