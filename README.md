@@ -316,6 +316,8 @@ For a detailed overview of the testing process, including test scenarios, result
 ### Limitations
 - The CSV file upload feature does not currently validate if values are negative or out of realistic range.
 - The prediction tool requires users to input values for all house features. Partial input is not supported.
+- Streamlit layout can be inconsistent on very small mobile devices.
+- Model retraining currently requires manual re-execution of notebooks.
 
 ## Deployment
 

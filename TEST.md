@@ -15,7 +15,6 @@ This document contains a detailed overview of all testing conducted during the d
     - [Jupyter Notebooks](#jupyter-notebooks)
     - [Streamlit Dashboard](#streamlit-dashboard)
   - [Browser and Device Compatibility](#browser-and-device-compatibility)
-  - [Known Bugs and Limitations](#known-bugs-and-limitations)
   - [Testing Tools Used](#testing-tools-used)
 
 ---
@@ -88,14 +87,6 @@ The dashboard was tested on the following environments:
 | Desktop | Firefox | Passed |
 | Android | Chrome | Passed |
 | iPad | Safari | Passed |
-
----
-
-## Known Bugs and Limitations
-
-- No unresolved bugs remain at the time of final submission.
-- Streamlit layout can be inconsistent on very small mobile devices.
-- Model retraining currently requires manual re-execution of notebooks.
 
 ---
 
