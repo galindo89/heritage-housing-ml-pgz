@@ -36,6 +36,11 @@ def home_page():
         It includes both numerical and categorical features describing
         aspects such as size, location, condition, and amenities.
         The target variable is the house sale price.
+        
+        The dataset is publicly available and does not contain 
+        any personally identifiable information (PII) or sensitive data. 
+        Therefore, its use complies with ethical and privacy standards 
+        required for public deployment.
         """
     )
 
